@@ -1,0 +1,17 @@
+const seq = (arg, prevf = p => p) => {
+    if (typeof (arg) === 'number') {
+        x = arg
+        return prevf(x)
+    }
+    currf = arg
+    return arg2 => seq(arg2, x => prevf(currf(x)))
+}
+
+let res = seq(5)
+console.log(res)
+
+res = seq(x => x * 2)(x => x + 7)(x => x - 2)(x => x + 1)(5)
+console.log(res)
+
+res = seq(x => x * 2)(5)
+console.log(res)
